@@ -32,8 +32,8 @@ class ReadTextAnnotations(object):
                 boxes_coord+=[[xmin,ymin,xmax,ymax]]
                 boxes_label+=[int(coord_with_label[4])]
             
-            boxes_coords+=[np.array(boxes_coord)]
-            boxes_labels+=[np.array(boxes_label)]
+            boxes_coords+=[np.array(boxes_coord,dtype=np.float32)]
+            boxes_labels+=[np.array(boxes_label,dtype=np.float32)]
         
         return boxes_coords,boxes_labels,image_paths
         

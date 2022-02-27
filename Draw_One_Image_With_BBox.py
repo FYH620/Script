@@ -16,8 +16,8 @@ class DrawOnePictureWithBBox(object):
         '''
 
         self.img = img
-        self.bbox_coords = bbox_coords
-        self.bbox_labels = bbox_labels
+        self.bbox_coords = np.array(bbox_coords,dtype=np.int32)
+        self.bbox_labels = np.array(bbox_labels,dtype=np.int32)
         self.bbox_scores = bbox_scores
         self.index_to_labels = index_to_labels
 
@@ -27,12 +27,12 @@ class DrawOnePictureWithBBox(object):
 
             min_xy=(self.bbox_coords[i,0],self.bbox_coords[i,1])
             max_xy=(self.bbox_coords[i,2],self.bbox_coords[i,3])
-            cv2.rectangle(self.img,min_xy,max_xy,color=(255,0,0),thickness=3)
+            cv2.rectangle(self.img,min_xy,max_xy,color=(241,86,66),thickness=2)
 
             texts = str(self.index_to_labels[self.bbox_labels[i]])
             if self.bbox_scores is not None:
                 texts += str(np.round(self.bbox_scores[i], decimals=2))
-            cv2.putText(self.img,texts,min_xy,cv2.FONT_HERSHEY_PLAIN,color=(0,0,255),thickness=1,fontScale=2)
+            cv2.putText(self.img,texts,min_xy,cv2.FONT_HERSHEY_PLAIN,color=(16,213,243),thickness=1,fontScale=1)
 
         cv2.imshow('img-with-box:press q to exit',self.img)
         cv2.waitKey()
