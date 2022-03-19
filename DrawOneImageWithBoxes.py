@@ -19,8 +19,8 @@ class DrawOnePictureWithBBox(object):
         """
 
         self.img = img
-        self.bbox_coords = np.array(bbox_coords, dtype=np.int32)
-        self.bbox_labels = np.array(bbox_labels, dtype=np.int32)
+        self.bbox_coords = np.array(bbox_coords)
+        self.bbox_labels = np.array(bbox_labels)
         self.bbox_scores = bbox_scores
         self.index_to_labels = index_to_labels
 
