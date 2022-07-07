@@ -1,6 +1,5 @@
 import torch.nn.functional as F
 from torch import nn
-from torch.autograd import Variable
 
 
 class LabelSmoothLoss(nn.Module):
@@ -16,6 +15,3 @@ class LabelSmoothLoss(nn.Module):
         weight.scatter_(-1, target.unsqueeze(-1), (1.0 - self.smoothing))
         loss = (-weight * log_prob).sum(dim=-1).mean()
         return loss
-
-
-# criterion=LabelSmoothLoss(0.1)
